@@ -1,3 +1,17 @@
+<#
+.SYNOPSIS
+    Interactive Kubernetes Pod troubleshooting and diagnostic report wizard.
+
+.DESCRIPTION
+    Scans Kubernetes cluster namespaces for Ready or Not-Ready pods, presents an interactive tabular selection menu, 
+    parses container configurations (images, ports, state, resource limits/requests, environment variables, mounts), 
+    highlights warning/error events, and displays recommended troubleshooting commands.
+
+.NOTES
+    Prerequisites:
+    - `kubectl` CLI installed and configured with active cluster context.
+#>
+
 # -----------------------------------------------------------------------------
 # Script: PodTroubleshoot.ps1
 # Description: Interactive troubleshooter with structured tabular pod selection menus.

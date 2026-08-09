@@ -1,10 +1,23 @@
 <#
 .SYNOPSIS
-    Adds a new user node pool and migrates workloads from an old node pool.
+    Adds a new AKS node pool and migrates running workloads from an old node pool.
+
+.DESCRIPTION
+    Automates the step-by-step migration process for AKS node pools:
+    1. Checks if the target node pool exists, prompting user confirmation for creation.
+    2. Cordons old nodes to prevent new pod scheduling.
+    3. Drains active pods off old nodes using kubectl drain.
+    4. Verifies pod status on the new node pool.
+    5. Optionally deletes the old node pool after verification.
 
 .NOTES
-    Prerequisites: Azure PowerShell (Az module) and kubectl installed/authenticated.
+    Prerequisites:
+    - Azure CLI (`az`) logged in with access to the target AKS cluster.
+    - `kubectl` configured with cluster admin context.
+    - Azure PowerShell module (`Az.Accounts`).
 #>
+
+#Requires -Module Az.Accounts
 
 # --- Configuration ---
 $ResourceGroupName = "<REDACTED>"       # Change to your resource group name

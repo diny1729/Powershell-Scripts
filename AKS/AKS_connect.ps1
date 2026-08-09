@@ -1,3 +1,18 @@
+<#
+.SYNOPSIS
+    Interactive prompt for selecting Kubeconfig files, cluster contexts, and default namespaces.
+
+.DESCRIPTION
+    Scans the user's `~/.kube` directory for available Kubeconfig files, sets the active `$env:KUBECONFIG` path,
+    prompts the user to select an active cluster context and default namespace, and executes `kubelogin` conversion
+    if a monitoring cluster context is detected.
+
+.NOTES
+    Prerequisites:
+    - `kubectl` installed and added to PATH.
+    - `kubelogin` installed (if connecting to Azure AD integrated clusters).
+#>
+
 # --- STEP 0: SELECT KUBECONFIG FILE ---
 $kubeDir = "$HOME\.kube"
 $configFiles = Get-ChildItem -Path $kubeDir -File | Where-Object { $_.Name -like "*config*" -or $_.Extension -eq ".yaml" }

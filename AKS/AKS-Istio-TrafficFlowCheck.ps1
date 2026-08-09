@@ -1,3 +1,18 @@
+<#
+.SYNOPSIS
+    Interactive Kubernetes traffic flow and routing tracer for Istio mesh VirtualServices.
+
+.DESCRIPTION
+    Scans a selected namespace for Istio VirtualServices, allows interactive selection of routing paths/prefixes, 
+    maps target Kubernetes Services, dynamically resolves pod selectors (including metadata label fallback), 
+    and outputs a live ASCII topology diagram showing traffic flow from VirtualService -> Service -> Pods.
+
+.NOTES
+    Prerequisites:
+    - `kubectl` connected to an active Kubernetes cluster with Istio CRDs installed.
+    - Cluster permissions to read VirtualServices (`networking.istio.io`), Services, and Pods.
+#>
+
 # -----------------------------------------------------------------------------
 # Script: AKS-TrafficCheck.ps1
 # Description: Traffic tracer using direct native kubectl commands for pod label printing

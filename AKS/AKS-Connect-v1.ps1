@@ -1,3 +1,19 @@
+<#
+.SYNOPSIS
+    Interactive CLI tool for connecting to AKS clusters and downloading cluster credentials.
+
+.DESCRIPTION
+    Provides an interactive menu system to batch download AKS cluster credentials from Azure CLI into 
+    separate environment configuration files (Non-prod / Prod), switch cluster contexts, set active 
+    namespaces, and execute kubelogin conversions for Azure AD integrated clusters.
+
+.NOTES
+    Prerequisites:
+    - Azure CLI (`az`) logged in (`az login`) when downloading credentials.
+    - `kubectl` installed and added to PATH.
+    - `kubelogin` binary installed for Azure AD token-based cluster authentication.
+#>
+
 # --- SETUP DIRECTORY ---
 $kubeDir = "$HOME\.kube"
 if (-not (Test-Path $kubeDir)) {
